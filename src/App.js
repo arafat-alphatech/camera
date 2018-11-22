@@ -1,25 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import Qrscanner from './Qrscanner'
+import Camera from './Camera'
 class App extends Component {
+
+  state = {
+    displayScanner: false
+  }
+
+  showScanner(){
+    let mark = true
+    if(this.state.displayScanner) {
+      mark = false
+    }
+    this.setState({
+      displayScanner: mark
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {
+         this.state.displayScanner ?  
+          <div style={{width: 200}}>
+              {/* <Qrscanner/> */}
+              <Camera/>
+              <hr/>
+          </div>
+          :
+          ""
+        }
+        <button onClick={() => this.showScanner()}>click me </button>
       </div>
     );
   }
