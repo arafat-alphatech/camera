@@ -17,17 +17,19 @@ class App extends Component {
         this.setState({
             dataUri: dataUri
         })
+        
         console.log(dataUri)
-        const url = "http://localhost:5000/camera"
+        const url = "http://0.0.0.0:5000/camera"
 
         const body = {
             dataUri: dataUri
         }
         axios
         .post(url, body)
+        // .get(url)
         .then((response) => {
             console.log("Response signup: ", response)
-            alert('berhasil')
+            alert("nama= " + response.data.nama + " score: " + response.data.score)
         })
         .catch((err) => {
             console.log(err)
