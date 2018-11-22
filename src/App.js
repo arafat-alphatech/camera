@@ -24,8 +24,8 @@ class App extends Component {
         {
          this.state.displayScanner ?  
           <div style={{width: 200}}>
-              {/* <Qrscanner/> */}
-              <Camera/>
+              <Qrscanner/>
+              {/* <Camera/> */}
               <hr/>
           </div>
           :
