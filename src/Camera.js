@@ -18,8 +18,8 @@ class App extends Component {
             dataUri: dataUri
         })
         
-        console.log(dataUri)
-        const url = "http://0.0.0.0:5000/camera"
+        // console.log(dataUri)
+        const url = "http://13.251.190.114:5000/camera"
 
         const body = {
             dataUri: dataUri
@@ -28,8 +28,8 @@ class App extends Component {
         .post(url, body)
         // .get(url)
         .then((response) => {
-            console.log("Response signup: ", response)
-            alert("nama= " + response.data.nama + " score: " + response.data.score)
+            console.log("Response data: ", response.data)
+            // alert("nama= " + response.data.nama + " score: " + response.data.score)
         })
         .catch((err) => {
             console.log(err)
