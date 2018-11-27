@@ -24,10 +24,10 @@ class App extends Component {
   uye = () => {
     // alert("hhh")
     axios
-    .get("https://172.11.112.113:5001/camera")
+    .get("https://sipss-api.online/")
     // .get("https://0.0.0.0:5001/camera")
     .then((value) => {
-        alert(value.data.score)
+        alert('uyee berhasil hit ke API...')
     })
     .catch((err) => {
         alert(err)
