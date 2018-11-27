@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Camera from 'react-html5-camera-photo';
+import Camera, { FACING_MODES } from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import axios from 'axios'
 var base64Img = require('base64-img');
@@ -18,31 +18,36 @@ class App extends Component {
             dataUri: dataUri
         })
         
-        // console.log(dataUri)
-        const url = "http://13.251.190.114:5000/camera"
+        console.log(dataUri)
+        // const url = "https://172.11.116.13:5001/camera"
+        // const url = "https://13.251.190.114:5001/camera"
+        const url = "https://0.0.0.0:5001/camera"
 
         const body = {
             dataUri: dataUri
         }
         axios
         .post(url, body)
-        // .get(url)
+        // .get(url) 
         .then((response) => {
             console.log("Response data: ", response.data)
-            // alert("nama= " + response.data.nama + " score: " + response.data.score)
+            alert("codes= " + response.data.codes + " score: " + response.data.score)
         })
         .catch((err) => {
-            console.log(err)
+            alert(err)
         })
     }
- 
+    
     render () {
         return (
         <div className="App">
             {/* <img src={this.state.dataUri} /> */}
             <Camera
             onTakePhoto = { (dataUri) => { this.onTakePhoto(dataUri); } }
-            />
+            idealFacingMode = {FACING_MODES.ENVIRONMENT}
+            isImageMirror = {false}
+            isMaxResolution = {true}
+            />            
         </div>
         );
     }
